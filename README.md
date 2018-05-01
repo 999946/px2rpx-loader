@@ -20,7 +20,20 @@ a [webpack](http://webpack.github.io/) loader for [px2rpx](https://github.com/aO
 
 ```
 {
-  loaders: [{ test: /\.css$/, loader: 'style!css!px2rpx?rpxUnit=75&rpxPrecision=8' }]
+  loaders: [{ test: /\.css$/, use: {
+    loader: 'px2rpx-loader',
+    options: {
+      baseDpr: 2,
+      rpxUnit: 1,
+      patterns: [{
+        test: 'mp-weui/*',
+        options: {
+          baseDpr: 1,
+          rpxUnit: 0.5
+        }
+      }]
+    }
+  }}]
 }
 ```
 
